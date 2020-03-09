@@ -1,0 +1,5 @@
+SELECT k.manager_id, s.emp_name AS manager, k.average_salary_under_manager
+FROM staff AS s
+INNER JOIN (SELECT AVG(salary) AS average_salary_under_manager, manager_id FROM staff GROUP BY manager_id) AS k
+ON s.emp_id = k.manager_id
+ORDER BY k.manager_id
